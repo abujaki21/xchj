@@ -27,10 +27,16 @@ class Server{
       Socket client = serverSocket.accept();
       PrintWriter out = new PrintWriter(client.getOutputStream(),true);
       BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+      String command;
+      //Wait for commands and reply to them
+      while(command = in.readLine() != null){ //<== This feels wrong
+        out.printLine(command);
+      }
     }
     catch(IOException e){
       //Socket cannot bind -- Likely in use
       System.out.println("Unable to listen on port " + port + ". Please ensure the port is free and try again.");
+      System.out.println(e.getMessage());
     }
   }
 }

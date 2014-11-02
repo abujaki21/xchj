@@ -17,13 +17,23 @@ import java.io.*;
 class client{
   Socket sock = null;
   Printwriter out = null;
-  BifferedReader in = null;
+  BufferedReader in = null;
+  boolean connected = false;
 
   public static void main(String[] eventArgs){
     // Main subroutine
     connect("localhost",51);
     //--Do stuff here
-    disconnect();
+    String command;
+    while(connected){
+      command = System.in.readLine();
+      out.printLine(command);
+      command = in.readLine();
+      System.out.printLine(command);
+      if(command == "bye"){
+        disconnect();
+      }
+    }
   }
 
   private connect(String hostname, int portNumber){
@@ -33,11 +43,13 @@ class client{
       sock = new Socket(hostname, portNumber);
       out = new PrintWriter(sock.getOutputStream(), true);
       in = new BufferedReader(sock.getInputStream()));
+      connected = true;
     }
   }
 
   private disconnect(){
     //close the socket connection
     sock.close();
+    connected = false;
   }
 }
