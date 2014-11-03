@@ -4,7 +4,7 @@
  * Author: Abujaki21
  *
  * Version: 0.0.1
- * Date: 01 Nov 2014
+ * Date: 02 Nov 2014
  * Description: Base server class
 \******************************************************************************/
 
@@ -12,12 +12,13 @@ package server;
 
 //-----Imports-----//
 import java.net.*;
-import java.io.*;
+import java.io.PrintWriter;
+import java.io.BufferedReader;
 
 
 class Server{
   //in case the port needs to be changed
-  private port = 51;
+  private static int port = 51;
 
   public static void main(String[] eventArgs){
     try{
@@ -27,10 +28,11 @@ class Server{
       Socket client = serverSocket.accept();
       PrintWriter out = new PrintWriter(client.getOutputStream(),true);
       BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-      String command;
+      String command = in.readLine();
       //Wait for commands and reply to them
-      while(command = in.readLine() != null){ //<== This feels wrong
-        out.printLine(command);
+      while(command != null){ //<== This feels wrong
+        out.println(command);
+        command = in.readLine();
       }
     }
     catch(IOException e){

@@ -4,7 +4,7 @@
  * Author: Abujaki21
  *
  * Version: 0.0.1
- * Date: 01 Nov 2014
+ * Date: 02 Nov 2014
  * Description: Base client class
 \******************************************************************************/
 
@@ -15,10 +15,10 @@ import java.net.*;
 import java.io.*;
 
 class client{
-  Socket sock = null;
-  Printwriter out = null;
-  BufferedReader in = null;
-  boolean connected = false;
+  private static Socket sock = null;
+  private static Printwriter out = null;
+  private static BufferedReader in = null;
+  private static boolean connected = false;
 
   public static void main(String[] eventArgs){
     // Main subroutine
@@ -27,7 +27,7 @@ class client{
     String command;
     while(connected){
       command = System.in.readLine();
-      out.printLine(command);
+      out.println(command);
       command = in.readLine();
       System.out.printLine(command);
       if(command == "bye"){
@@ -36,18 +36,22 @@ class client{
     }
   }
 
-  private connect(String hostname, int portNumber){
+  private static connect(String hostname, int portNumber){
     //Connect to server
     try{
       //Create a socket and attach
       sock = new Socket(hostname, portNumber);
       out = new PrintWriter(sock.getOutputStream(), true);
-      in = new BufferedReader(sock.getInputStream()));
+      in = new BufferedReader(sock.getInputStream());
       connected = true;
+    }
+    catch(IOException e){
+      //El no connecto
+      System.err.println("Cannot connect on port 51.");
     }
   }
 
-  private disconnect(){
+  private static disconnect(){
     //close the socket connection
     sock.close();
     connected = false;
