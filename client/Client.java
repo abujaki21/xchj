@@ -4,7 +4,7 @@
  * Author: Abujaki21
  *
  * Version: 0.0.1
- * Date: 02 Nov 2014
+ * Date: 03 Nov 2014
  * Description: Base client class
 \******************************************************************************/
 
@@ -24,6 +24,13 @@ class client{
     // Main subroutine
     connect("localhost",51);
     //--Do stuff here
+
+    System.out.write("User: ");
+    String user = System.in.readLine();
+    System.out.write("Passcode: ");
+    char[] passcode = System.in.readPassword();
+
+
     String command;
     while(connected){
       command = System.in.readLine();
