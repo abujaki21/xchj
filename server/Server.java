@@ -29,6 +29,22 @@ class Server{
       PrintWriter out = new PrintWriter(client.getOutputStream(),true);
       BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
       String command = in.readLine();
+
+      //-----Authentication Block-----//
+      //read request
+	String request = in.readLine();
+      //Challenge request
+	String challenge = generateChallenge(request);
+	out.println(challenge);
+      //Read response
+	request = in.readLine();
+      //Calculate answer
+      //Compare response to answer
+
+      //Respond with accept/deny
+      //    If deny, close connection
+      //    else serve incoming requests
+
       //Wait for commands and reply to them
       while(command != null){ //<== This feels wrong
         out.println(command);
@@ -40,5 +56,8 @@ class Server{
       System.out.println("Unable to listen on port " + port + ". Please ensure the port is free and try again.");
       System.out.println(e.getMessage());
     }
+  } //-- End main class
+  private String generateChallenge(String request){
+
   }
 }

@@ -30,8 +30,23 @@ class client{
     System.out.write("Passcode: ");
     char[] passcode = System.in.readPassword();
 
+    String command, response;
 
-    String command;
+    //-----Authentication Block-----//
+    //Initiate connection
+      connect();
+    //Send connection request
+      out.println(user);
+    //Read challenge
+      response = in.readLine();
+    //Calculate response
+    //Send response
+      out.println(generateResponse(response,passcode);
+    //Read accept/deny
+    //    If deny, close connection
+    //    Else continue sending requests
+
+
     while(connected){
       command = System.in.readLine();
       out.println(command);
@@ -41,6 +56,10 @@ class client{
         disconnect();
       }
     }
+  }
+
+  private static generateResponse(String response, String passcode){
+
   }
 
   private static connect(String hostname, int portNumber){
