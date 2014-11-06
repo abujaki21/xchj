@@ -46,7 +46,7 @@ class Server{
       //    else serve incoming requests
 
       //Wait for commands and reply to them
-      while(command != null){ //<== This feels wrong
+      while(command != null){
         out.println(command);
         command = in.readLine();
       }
