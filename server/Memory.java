@@ -73,7 +73,7 @@ class Memory{
     public boolean equals(Object O){
       if(O == null)
         return false;
-      if(!(O instanceof Pair)}
+      if(!(O instanceof Pair))
         return false;
       Pair OPair = (Pair) O;
       return this.left.equals(OPair.getLeft()) && this.right.equals(OPair.getRight());

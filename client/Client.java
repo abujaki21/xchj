@@ -41,7 +41,7 @@ class client{
       response = in.readLine();
     //Calculate response
     //Send response
-      out.println(generateResponse(response,passcode);
+      out.println(generateResponse(response,passcode));
     //Read accept/deny
     //    If deny, close connection
     //    Else continue sending requests

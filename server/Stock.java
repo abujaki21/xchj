@@ -49,7 +49,7 @@ class Stock{
     //Dawn of the second day. 48 Hours remain.
   }
 
-  public boolean sellStocks(double price, int amount{ return sellStock(price/amount);
+  public boolean sellStocks(double price, int amount return sellStock(price/amount);
     //used when selling multiple stocks because who sells just one?
     //"One art please" ~Dr. Zoidberg
   }

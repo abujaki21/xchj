@@ -12,9 +12,7 @@ package server;
 
 //-----Imports-----//
 import java.net.*;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.BufferedReader;
+import java.io.*;
 
 
 class Server{
@@ -26,7 +24,7 @@ class Server{
       //Create a new socket and listen to it
       ServerSocket sock = new ServerSocket(port);
       //Accept the connection, and attach IO objects
-      Socket client = ServerSocket.accept();
+      Socket client = ServerSocket.accept(); //!!!!!!!!!!!!!!!!!Must 2 B Static
       PrintWriter out = new PrintWriter(client.getOutputStream(),true);
       BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
       //         !!REVISE!!                      ^
