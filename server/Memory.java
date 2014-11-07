@@ -14,8 +14,6 @@ package server;
 import java.io.*;
 import java.util.HashMap;
 
-import Stock;
-
 class Memory{
 
   HashMap OwnedStocks = new HashMap<Pair<String,String>,int>

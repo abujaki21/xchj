@@ -58,11 +58,11 @@ class client{
     }
   }
 
-  private static generateResponse(String response, String passcode){
-
+  private static String generateResponse(String response, String passcode){
+    return response + passcode;
   }
 
-  private static connect(String hostname, int portNumber){
+  private static void connect(String hostname, int portNumber){
     //Connect to server
     try{
       //Create a socket and attach
@@ -77,7 +77,7 @@ class client{
     }
   }
 
-  private static disconnect(){
+  private static void disconnect(){
     //close the socket connection
     sock.close();
     connected = false;

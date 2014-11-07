@@ -12,6 +12,7 @@ package server;
 
 //-----Imports-----//
 import java.net.*;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.BufferedReader;
 
@@ -25,9 +26,10 @@ class Server{
       //Create a new socket and listen to it
       ServerSocket sock = new ServerSocket(port);
       //Accept the connection, and attach IO objects
-      Socket client = serverSocket.accept();
+      Socket client = ServerSocket.accept();
       PrintWriter out = new PrintWriter(client.getOutputStream(),true);
       BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+      //         !!REVISE!!                      ^
       String command = in.readLine();
 
       //-----Authentication Block-----//
@@ -57,7 +59,7 @@ class Server{
       System.out.println(e.getMessage());
     }
   } //-- End main class
-  private String generateChallenge(String request){
+  private static String generateChallenge(String request){
 
   }
 }

@@ -34,7 +34,7 @@ class StockOrder{
   public double getPriceTotal(){return amount * price;}
 
   //*Note: This assumes logic/idiot tests have already been done*//
-  public deductStock(int amt){
+  public void deductStock(int amt){
     if(amount > amt)
       amount -= amt;
     else

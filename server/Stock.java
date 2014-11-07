@@ -36,7 +36,10 @@ class Stock{
   public String getFriendly(){return friendly;}
   public String getResponsible(){return resp;}
   public int getAmount(){return amount;}
-  public double[] getPrices(){return {open,high,low,close};}
+  public double[] getPrices(){
+    double[] prices = {open,high,low,close};
+    return prices;
+  }
   public double getLastPrice(){return close;}
   //Hopefully this block of code can go without explanation. If not, I'm not
   //sure I want you dabbling with it anyway.
