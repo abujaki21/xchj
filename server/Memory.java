@@ -23,7 +23,7 @@ class Memory{
   //* Note: These assume the error and idiot-checking has already been done. *//
   public int getStock(String user, String stockCode){
     Pair<String,String> key = new Pair(user,stockCode);
-    if(OwnedStocks.containsKey(key)
+    if(OwnedStocks.containsKey(key))
       return get(key);
     else
     return 0;

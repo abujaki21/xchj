@@ -34,35 +34,6 @@ class client{
 
     //-----Authentication Block-----//
     //Initiate connection
-      connect();
-    //Send connection request
-      out.println(user);
-    //Read challenge
-      response = in.readLine();
-    //Calculate response
-    //Send response
-      out.println(generateResponse(response,passcode));
-    //Read accept/deny
-    //    If deny, close connection
-    //    Else continue sending requests
-
-
-    while(connected){
-      command = System.in.readLine();
-      out.println(command);
-      command = in.readLine();
-      System.out.printLine(command);
-      if(command == "bye"){
-        disconnect();
-      }
-    }
-  }
-
-  private static String generateResponse(String response, String passcode){
-    return response + passcode;
-  }
-
-  private static void connect(String hostname, int portNumber){
     //Connect to server
     try{
       //Create a socket and attach
@@ -70,11 +41,40 @@ class client{
       out = new PrintWriter(sock.getOutputStream(), true);
       in = new BufferedReader(sock.getInputStream());
       connected = true;
+
+    while(connected){
+      command = System.in.readLine();
+      out.println(command);
+      command = in.readLine();
+      System.out.printLine(command);
+      if(command == "bye"){
+        connected = false;
+      }
+    }
+    //Send connection request
+    //  out.println(user);
+    //Read challenge
+    //  response = in.readLine();
+    //Calculate response
+    //Send response
+    //  out.println(generateResponse(response,passcode));
+    //Read accept/deny
+    //    If deny, close connection
+    //    Else continue sending requests
+
+
     }
     catch(IOException e){
       //El no connecto
       System.err.println("Cannot connect on port 51.");
     }
+    finally{
+      sock.close();
+    }
+  }
+
+  private static String generateResponse(String response, String passcode){
+    return response + passcode;
   }
 
   private static void disconnect(){
