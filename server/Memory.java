@@ -16,7 +16,7 @@ import java.util.HashMap;
 
 class Memory{
 
-  HashMap OwnedStocks = new HashMap<Pair<String,String>,int>
+  HashMap OwnedStocks = new HashMap<Pair<String,String>,int>;
   //TODO: Look into synchronized maps if multiple login threads are implemented
 
   //-----Public Getters and Setters-----//

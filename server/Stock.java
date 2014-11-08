@@ -17,7 +17,7 @@ class Stock{
   double open, high, low, close;
 
   //-----Public Constructors-----//
-  public Stock(String code, String friendly, String resp, int amount){Stock(code, friendly, resp, amount, 0.0);}
+
   public Stock(String code, String friendly, String resp, int amount, double price){
     this.code = code; //Caps code to uniquely identify the stock
     this.friendly = friendly; //Human-friendly name of the stock

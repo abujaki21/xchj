@@ -3,8 +3,8 @@
  * Project: xchj
  * Author: Abujaki21
  *
- * Version: 0.0.1
- * Date: 03 Nov 2014
+ * Version: 0.0.3
+ * Date: 08 Nov 2014
  * Description: Base client class
 \******************************************************************************/
 
@@ -15,38 +15,38 @@ import java.net.*;
 import java.io.*;
 
 class client{
-  private static Socket sock = null;
-  private static Printwriter out = null;
-  private static BufferedReader in = null;
-  private static boolean connected = false;
 
   public static void main(String[] eventArgs){
-    // Main subroutine
-    connect("localhost",51);
-    //--Do stuff here
 
-    System.out.write("User: ");
-    String user = System.in.readLine();
-    System.out.write("Passcode: ");
-    char[] passcode = System.in.readPassword();
+    Socket sock = null;
+    PrintWriter nout = null;
+    BufferedReader nin = null;
+    boolean connected = false;
 
-    String command, response;
+    BufferedReader sin = new BufferedReader(new InputStreamReader(System.in));
+/*
+    System.out.print("User: ");
+    String user = sin.readLine();
+    System.out.print("Passcode: ");
+    char[] passcode = sin.readPassword();
+*/
+    String command;//, response;
 
     //-----Authentication Block-----//
     //Initiate connection
     //Connect to server
     try{
       //Create a socket and attach
-      sock = new Socket(hostname, portNumber);
-      out = new PrintWriter(sock.getOutputStream(), true);
-      in = new BufferedReader(sock.getInputStream());
+      sock = new Socket("localhost",51);
+      nout = new PrintWriter(sock.getOutputStream(), true);
+      nin = new BufferedReader(new InputStreamReader(sock.getInputStream()));
       connected = true;
 
     while(connected){
-      command = System.in.readLine();
-      out.println(command);
-      command = in.readLine();
-      System.out.printLine(command);
+      command = sin.readLine();
+      nout.println(command);
+      command = nin.readLine();
+      System.out.println(command);
       if(command == "bye"){
         connected = false;
       }
@@ -62,24 +62,16 @@ class client{
     //    If deny, close connection
     //    Else continue sending requests
 
-
+    sock.close();
     }
     catch(IOException e){
       //El no connecto
       System.err.println("Cannot connect on port 51.");
     }
-    finally{
-      sock.close();
-    }
   }
-
+/*
   private static String generateResponse(String response, String passcode){
     return response + passcode;
   }
-
-  private static void disconnect(){
-    //close the socket connection
-    sock.close();
-    connected = false;
-  }
+*/
 }
