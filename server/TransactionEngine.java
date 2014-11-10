@@ -8,7 +8,6 @@
  * Description: Transaction engine
 \******************************************************************************/
 
-package server;
 
 import java.io.*;
 

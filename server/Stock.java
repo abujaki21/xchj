@@ -9,7 +9,6 @@
  *     permanent in place
 \******************************************************************************/
 
-package server;
 
 class Stock{
   String friendly, code, resp;

@@ -9,7 +9,6 @@
  *     permanent in place
 \******************************************************************************/
 
-package server;
 
 import java.io.*;
 import java.util.HashMap;

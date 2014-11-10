@@ -9,7 +9,6 @@
  *     permanent in place
 \******************************************************************************/
 
-package server;
 
 class StockOrder{
   final String code, user; //Stock Code, User

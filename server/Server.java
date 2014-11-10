@@ -8,8 +8,6 @@
  * Description: Base server class
 \******************************************************************************/
 
-package server;
-
 //-----Imports-----//
 import java.net.*;
 import java.io.*;

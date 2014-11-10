@@ -8,8 +8,6 @@
  * Description: Base client class
 \******************************************************************************/
 
-package client;
-
 //-----Imports-----//
 import java.net.*;
 import java.io.*;
