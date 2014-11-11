@@ -41,10 +41,11 @@ class client{
       connected = true;
 
     while(connected){
+      System.out.print("> ");
       command = sin.readLine();
       nout.println(command);
       command = nin.readLine();
-      System.out.println(command);
+      System.out.println("Server: " + command);
       if(command == "bye"){
         connected = false;
       }
