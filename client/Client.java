@@ -20,6 +20,8 @@ class client{
     PrintWriter nout = null;
     BufferedReader nin = null;
     boolean connected = false;
+    final String host = "localhost";
+    final int port = 51;
 
     BufferedReader sin = new BufferedReader(new InputStreamReader(System.in));
 /*
@@ -30,12 +32,14 @@ class client{
 */
     String command;//, response;
 
+
+
     //-----Authentication Block-----//
     //Initiate connection
     //Connect to server
     try{
       //Create a socket and attach
-      sock = new Socket("localhost",51);
+      sock = new Socket(host, port);
       nout = new PrintWriter(sock.getOutputStream(), true);
       nin = new BufferedReader(new InputStreamReader(sock.getInputStream()));
       connected = true;
@@ -65,7 +69,7 @@ class client{
     }
     catch(IOException e){
       //El no connecto
-      System.err.println("Cannot connect on port 51.");
+      System.err.println("Cannot connect on port " + port + "on host " + localhost + ".");
     }
   }
 /*
